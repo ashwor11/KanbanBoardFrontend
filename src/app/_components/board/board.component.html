@@ -1,0 +1,48 @@
+
+<div class="kanban-container" >
+    <div cdkDropList
+    #backlogList="cdkDropList"
+    [cdkDropListData]="board.backlog.cards"
+    [cdkDropListConnectedTo]="[toDoList,inProgressList,reviewList,doneList]" class="column" (cdkDropListDropped)="drop($event)">
+        <div class="column-header">Backlog</div>
+        <div class="card" *ngFor="let card of board.backlog.cards" cdkDrag>{{card.name}}</div>
+    </div>
+    <div cdkDropList
+    #toDoList="cdkDropList"
+    [cdkDropListData]="board.toDo.cards"
+    [cdkDropListConnectedTo]="[backlogList,inProgressList,reviewList,doneList]"
+    class="column" (cdkDropListDropped)="drop($event)">
+        <div class="column-header">To Do</div>
+        <div class="card" *ngFor="let card of board.toDo.cards" cdkDrag>{{card.name}}</div>
+    </div>
+    <div cdkDropList
+    #inProgressList="cdkDropList"
+    [cdkDropListData]="board.inProgress.cards"
+    [cdkDropListConnectedTo]="[backlogList,toDoList,reviewList,doneList]"
+    class="column" (cdkDropListDropped)="drop($event)">
+        <div class="column-header">In Progress</div>
+        <div class="card" *ngFor="let card of board.inProgress.cards" cdkDrag>{{card.name}}</div>
+    </div>
+    <div cdkDropList
+    #reviewList="cdkDropList"
+    [cdkDropListData]="board.review.cards"
+    [cdkDropListConnectedTo]="[backlogList,inProgressList,toDoList,doneList]"
+    class="column" (cdkDropListDropped)="drop($event)">
+        <div class="column-header">Review</div>
+        <div class="card" *ngFor="let card of board.review.cards" cdkDrag>{{card.name}}</div>
+    </div>
+    <div cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="board.done.cards"
+    [cdkDropListConnectedTo]="[backlogList,inProgressList,reviewList,toDoList]"
+    class="column" (cdkDropListDropped)="drop($event)">
+        <div class="column-header">Done</div>
+        <div class="card" *ngFor="let card of board.done.cards" cdkDrag>{{card.name}}</div>
+    </div>
+</div>
+
+
+
+
+
+  
