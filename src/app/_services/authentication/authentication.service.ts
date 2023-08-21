@@ -28,7 +28,12 @@ export class AuthenticationService {
     return this.http.post<any>(url,body)
     .pipe(map(res=>{
       const person : Person = {
-        access_token : res.token
+        id : res.id,
+        firstName : res.firstName,
+        lastName : res.lastName,
+        email : res.email,
+        access_token : res.accessToken.token
+        
       };
       this.personSubject.next(person);
       localStorage.setItem('person', JSON.stringify(person));

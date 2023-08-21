@@ -1,0 +1,19 @@
+<h1 mat-dialog-title> </h1>
+
+
+
+    <div mat-dialog-content class="card-details">
+        <h2 class="card-name"><input type="text" [(ngModel)]="data.card.name" class="editable"></h2>
+        <div class="job" *ngFor="let job of data.card.jobs">
+            
+            <app-job [job]="job"></app-job>
+            
+            
+        </div>
+        <button>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="addNewJob()" fontIcon="add_circle_outline"></mat-icon>
+        </button>
+        
+
+        <!-- Repeat the above 'job' structure for each job -->
+    </div>

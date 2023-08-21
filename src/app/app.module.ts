@@ -1,13 +1,16 @@
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import {COMPONENTS, MODULES, PROVIDERS} from "./app.imports";
-import { ColumnComponent } from './_components/column/column.component';
+import { JobComponent } from './_components/job/job.component';
+import { FeedbackComponent } from './_components/feedback/feedback.component';
+
 
 
 @NgModule({
   declarations: [
     COMPONENTS,
-    ColumnComponent
+    FeedbackComponent,
+    
   ],
   imports: [
     MODULES

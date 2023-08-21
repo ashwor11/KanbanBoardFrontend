@@ -13,8 +13,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppComponent } from './app.component';
-import { CardComponent } from './_components/card/card.component';
+import { CardDetailsComponent } from './_components/card-details/card-details.component';
 import { ColumnComponent } from './_components/column/column.component';
+import { CardComponent } from './_components/card/card.component';
+import {MatIconModule} from '@angular/material/icon'
+import { JobComponent } from './_components/job/job.component';
 
 
 export const COMPONENTS : any[] = [
@@ -23,8 +26,10 @@ export const COMPONENTS : any[] = [
     LoginComponent,
     HomeComponent,
     BoardComponent,
+    CardDetailsComponent,
+    ColumnComponent,
     CardComponent,
-    ColumnComponent
+    JobComponent
     
 ];
 
@@ -36,7 +41,8 @@ export const MODULES : any[] = [
     ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule
 
 ];
 

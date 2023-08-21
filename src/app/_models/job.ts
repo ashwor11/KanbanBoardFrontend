@@ -5,4 +5,12 @@ export class Job{
     description !: string;
     isDone !: boolean;
     feedbacks !: Feedback[];
+
+    constructor(description : string, id : number){
+    this.description = description;
+    this.id = id;
+    this.feedbacks = [];
+    this.isDone = false;
+    }
 }
+

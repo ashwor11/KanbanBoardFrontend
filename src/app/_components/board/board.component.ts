@@ -4,8 +4,9 @@ import {CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem} from '@
 import { BoardService } from 'src/app/_services/board/board.service';
 import { Board } from 'src/app/_models/board';
 import { MatDialog } from '@angular/material/dialog';
-import { CardComponent } from '../card/card.component';
+import { CardDetailsComponent } from '../card-details/card-details.component';
 import { Card } from 'src/app/_models/card';
+import { Column } from 'src/app/_models/column';
 
 
 /**
@@ -39,20 +40,18 @@ export class BoardComponent {
       console.log(this.board);
     }
 
-    
-    openCard(card : Card){
-     let dialogRef = this.dialog.open(CardComponent,{
-        width: '60%',
-        height: '400px',
-        data :{ card : card}
-        
-      })
-      console.log("xd")
-
-
+    addNewCard(column : Column){
+      column.cards.push(new Card("Task"));
     }
+
+  public onMouseDown(mouseEvent : MouseEvent){
+    if (mouseEvent.detail > 1) mouseEvent.preventDefault();
+  }
+
+    
+    
   
-  
+    
   
   
   

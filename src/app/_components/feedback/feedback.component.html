@@ -1,0 +1,9 @@
+<section *ngIf="isUserAuthorized(feedback.writtenByPersonId); else notAuthorized">
+    <p ><input type="text" [(ngModel)]="feedback.content" class="editable"> <mat-icon aria-hidden="false" (click)="deleteFeedback(feedback.id)" aria-label="Example home icon" fontIcon="delete_forever"></mat-icon></p>
+    
+
+</section> 
+
+
+<ng-template #notAuthorized> <p class="editable">{{feedback.content}}</p></ng-template>
+<small class="right"> written by user with id{{feedback.writtenByPersonId}}</small>

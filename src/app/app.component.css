@@ -1,0 +1,12 @@
+.editable{
+    border:none;
+    outline:none;
+    background:transparent;
+ }
+
+
+ .right{
+    margin-left: auto;
+    margin-right: 0;
+
+ }

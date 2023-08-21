@@ -12,5 +12,15 @@ export class Card{
     finishDate !: Date;
     feedbacks !: Feedback[];
     jobs !: Job[];
+
+    constructor(name : string) {
+        this.name = name;
+        this.jobs = [];
+        this.feedbacks = [];
+    }
     
 }
+
+/**
+ *
+ */
