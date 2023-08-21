@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './_components/login/login.component';
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
 import {COMPONENTS, MODULES, PROVIDERS} from "./app.imports";
-import { HomeComponent } from './_components/home/home.component';
-import { BoardComponent } from './_components/board/board.component';
+import { ColumnComponent } from './_components/column/column.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    COMPONENTS
+    COMPONENTS,
+    ColumnComponent
   ],
   imports: [
     MODULES

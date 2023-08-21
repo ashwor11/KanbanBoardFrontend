@@ -10,11 +10,21 @@ import { HomeComponent } from './_components/home/home.component';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { BoardComponent } from './_components/board/board.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatDialogModule} from '@angular/material/dialog'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AppComponent } from './app.component';
+import { CardComponent } from './_components/card/card.component';
+import { ColumnComponent } from './_components/column/column.component';
+
 
 export const COMPONENTS : any[] = [
+
+    AppComponent,
     LoginComponent,
     HomeComponent,
-    BoardComponent
+    BoardComponent,
+    CardComponent,
+    ColumnComponent
     
 ];
 
@@ -24,7 +34,10 @@ export const MODULES : any[] = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    MatCheckboxModule
+
 ];
 
 export const PROVIDERS : any[] = [

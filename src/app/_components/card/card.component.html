@@ -1,0 +1,14 @@
+<h1 mat-dialog-title> </h1>
+
+
+
+    <div mat-dialog-content class="card-details">
+        <h2 class="card-name">{{data.card.name}}</h2>
+        <div class="job" *ngFor="let job of data.card.jobs">
+            
+            <div class="job-details">
+                <mat-checkbox [checked]="job.isDone" class="example-margin">{{job.description}}</mat-checkbox>
+            </div>
+        </div>
+        <!-- Repeat the above 'job' structure for each job -->
+    </div>

@@ -7,13 +7,15 @@
         <div class="column-header">Backlog</div>
         <div class="card" *ngFor="let card of board.backlog.cards" cdkDrag>{{card.name}}</div>
     </div>
+
+    
     <div cdkDropList
     #toDoList="cdkDropList"
     [cdkDropListData]="board.toDo.cards"
     [cdkDropListConnectedTo]="[backlogList,inProgressList,reviewList,doneList]"
     class="column" (cdkDropListDropped)="drop($event)">
         <div class="column-header">To Do</div>
-        <div class="card" *ngFor="let card of board.toDo.cards" cdkDrag>{{card.name}}</div>
+        <div mat-raised-button (click) ='openCard(card)' class="card" *ngFor="let card of board.toDo.cards" cdkDrag>{{card.name}}</div>
     </div>
     <div cdkDropList
     #inProgressList="cdkDropList"
