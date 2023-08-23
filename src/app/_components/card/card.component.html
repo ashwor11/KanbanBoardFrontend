@@ -1,4 +1,4 @@
-<h6 mat-raised-button (click)='openCard(card)'>{{card.name}}</h6>
+    <h6 mat-raised-button (click)='openCard(card)'>{{card.name}}</h6>
 <div mat-raised-button (click)='openCard(card)' *ngFor="let job of card.jobs">
-    <mat-checkbox [checked]="job.isDone" (click)="$event.stopPropagation()" class="example-margin">{{job.description}}</mat-checkbox>
+    <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob(job)" (click)="$event.stopPropagation()" class="example-margin">{{job.description}}</mat-checkbox>
 </div>

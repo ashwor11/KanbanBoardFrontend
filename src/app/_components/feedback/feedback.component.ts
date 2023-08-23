@@ -15,7 +15,6 @@ export class FeedbackComponent {
   isUserAuthorized(writtenByPersonId: number){
     let text  =localStorage.getItem('person')
     let person = JSON.parse(text!)
-    console.log(person);
     return writtenByPersonId == Number(person?.id);
   }
 

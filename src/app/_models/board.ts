@@ -14,5 +14,14 @@ export class Board{
     done !: Column;
 
 
-    
+    constructor(){
+        this.persons = [];
+        this.backlog = new Column();
+        this.toDo = new Column();
+        this.review = new Column();
+        this.inProgress = new Column();
+        this.done = new Column();
+
+
+    }
 }

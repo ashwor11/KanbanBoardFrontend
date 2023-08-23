@@ -6,7 +6,7 @@
         <h2 class="card-name"><input type="text" [(ngModel)]="data.card.name" class="editable"></h2>
         <div class="job" *ngFor="let job of data.card.jobs">
             
-            <app-job [job]="job"></app-job>
+            <app-job [boardId]="boardId" [job]="job"></app-job>
             
             
         </div>

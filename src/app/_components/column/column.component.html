@@ -1,4 +1,4 @@
-<div (dblclick)="addNewCard()" class="column-header prevent-select">{{column.id}}</div>
+<div  class="column-header prevent-select">{{column.id}}</div>
         <div class="card" *ngFor="let card of column.cards" cdkDrag>
             <app-card [card]="card"></app-card>
         </div>

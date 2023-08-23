@@ -1,7 +1,8 @@
 
 <div class="job-details">
     <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="addNewFeedback()" fontIcon="add_circle_outline"></mat-icon>
-    <mat-checkbox [checked]="job.isDone" style="border:none; outline: none;" class="example-margin"><input type="text" [(ngModel)]="job.description" class="editable"></mat-checkbox>
+    <br>
+    <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin"><input type="text" [(ngModel)]="job.description" class="editable"></mat-checkbox>
     <div class="feedbacks">
         <div class="feedback" *ngFor="let feedback of job.feedbacks">
             <app-feedback [feedback]="feedback"></app-feedback>

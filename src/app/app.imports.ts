@@ -18,6 +18,9 @@ import { ColumnComponent } from './_components/column/column.component';
 import { CardComponent } from './_components/card/card.component';
 import {MatIconModule} from '@angular/material/icon'
 import { JobComponent } from './_components/job/job.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 export const COMPONENTS : any[] = [
@@ -42,7 +45,9 @@ export const MODULES : any[] = [
     DragDropModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatDividerModule
 
 ];
 
