@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.card-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-name {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.card-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-name {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: justify;
+
+    input{
+        min-width :100px;
+    }
+}
+
+.job {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.job-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 10px;
+}
+
+.job-details {
+    display: flex;
+    align-items: center;
+}
+
+.job-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.job-description {
+    font-size: 16px;
+}
+
+
+
+    input{
+        min-width :600px;
+    }
+}
+
+.job {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.job-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 10px;
+}
+
+.job-details {
+    display: flex;
+    align-items: center;
+}
+
+.job-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.job-description {
+    font-size: 16px;
+}
+

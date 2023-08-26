@@ -1,4 +1,4 @@
 <div  class="column-header prevent-select">{{column.id}}</div>
-        <div class="card" *ngFor="let card of column.cards" cdkDrag>
-            <app-card [card]="card"></app-card>
+        <div class="card" (click)='openCard(card)' *ngFor="let card of column.cards" cdkDrag [cdkDragData]="card">
+            <app-card  (dblclick)="$event.stopPropagation()" [card]="card"></app-card>
         </div>

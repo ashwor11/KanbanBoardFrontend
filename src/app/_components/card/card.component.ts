@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Card } from 'src/app/_models/card';
-import { CardDetailsComponent } from '../card-details/card-details.component';
+import CardDetailsComponent from '../card-details/card-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { BoardService } from 'src/app/_services/board/board.service';
 import { Job } from 'src/app/_models/job';
@@ -14,6 +14,7 @@ import { Job } from 'src/app/_models/job';
 export class CardComponent {
 
   @Input()card !: Card;
+  @Output() DeleteCardEvent : EventEmitter<Card> = new EventEmitter<Card>()
 
 
   constructor(private dialog : MatDialog, private route : ActivatedRoute, private _boardService : BoardService) {
@@ -22,18 +23,7 @@ export class CardComponent {
 
   boardId : number = Number(this.route.snapshot.paramMap.get('id'))
 
-  openCard(card : Card){
-    console.log(card);
-    let dialogRef = this.dialog.open(CardDetailsComponent,{
-       width: '60%',
-       height: '400px',
-       data :{
-        card : card,
-        route : this.route
-      }
-       
-     })
-   }
+  
 
    markJob(job : Job){
     
@@ -42,5 +32,10 @@ export class CardComponent {
     }else{
       this._boardService.markJobAsUnDone(this.boardId,job.id);
     }
+  }
+
+  ondeleteCardEvent(item : any){
+    debugger
+    console.log("delted");
   }
 }

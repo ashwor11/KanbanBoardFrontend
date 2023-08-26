@@ -14,7 +14,6 @@ export class BoardService {
   
   
   
-  
 
   constructor(private http:HttpClient) {}
 
@@ -136,6 +135,18 @@ export class BoardService {
       return feedback;
     }));
   }
+
+  changeJobFeedbackContent(boardId: number, feedback : Feedback) : Observable<Feedback>{
+    const url : string = `${environment.apiUrl}board/${boardId}/jobFeedbacks/${feedback.id}/changeFeedback`;
+    let body = JSON.stringify(feedback.content)
+    let options = {
+      headers : new HttpHeaders().
+                      set('Content-Type','application/json')
+    };
+
+    return this.http.post<Feedback>(url,body,options);
+  }
+
   markJobAsUnDone(boardId: number, jobId: number) {
     const url : string = `${environment.apiUrl}board/${boardId}/jobs/${jobId}/markAsUnDone`
     let options ={
@@ -157,6 +168,61 @@ export class BoardService {
     }
     
    this.http.get(url,options).subscribe()
+  }
+
+  deleteJob(boardId: number, job: Job)  : Observable<any>{
+    const url : string = `${environment.apiUrl}board/${boardId}/jobs/${job.id}/delete`
+    let options ={
+      headers : new HttpHeaders()
+                      .set('Content-Type', 'application-json')
+    }
+
+    return this.http.delete(url);
+
+  }
+
+  deleteJobFeedback(boardId: number, feedback : Feedback) : Observable<any>{
+    const url : string = `${environment.apiUrl}board/${boardId}/jobFeedbacks/${feedback.id}/delete`
+    let options={
+      headers : new HttpHeaders()
+                      .set('Content-Type','application-json')
+    }
+
+    return this.http.delete(url,options);
+  }
+
+  deleteCard(boardId : number, card : Card) : Observable<any>{
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/delete`
+    let options={
+      headers : new HttpHeaders()
+                      .set('Content-Type','application-json')
+    }
+
+    return this.http.delete(url, options);
+  }
+
+  invitePersonToBoard(boardId : number, email : string) : Observable<any>{
+    const url : string = `${environment.apiUrl}board/${boardId}/invitePersonToBoard`
+    let body = {
+      invitationAcceptUrlPrefix : window.location.origin + "/acceptInvitation",
+      invitedPersonEmail : email 
+    }
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.post(url,body,options);
+
+  }
+
+  acceptBoardInvitation(invitationAcceptToken: string | null) {
+    const url : string = `${environment.apiUrl}board/acceptInvitation?InvitationAcceptToken=${invitationAcceptToken}`;
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.get(url,options);
+    
   }
 
   

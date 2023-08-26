@@ -19,9 +19,11 @@ export class ErrorInterceptor {
         return next.handle(request).pipe(catchError(err => {
             if ([400, 403].includes(err.status) && this._auth.personValue) {
                 alert(err.error.Detail);
+                this.router.navigate(["login"]);
             }
             if ([401].includes(err.status) && this._auth.personValue) {
                 this.router.navigate(["login"]);
+                this._auth.logOff();
                 alert(err.error.Detail);
             }
             return throwError(()=>err)

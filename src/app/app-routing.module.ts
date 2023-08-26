@@ -5,6 +5,8 @@ import { LoginComponent } from './_components/login/login.component';
 
 import { AuthGuard } from "./_guards/auth/auth.guard";
 import { BoardComponent } from './_components/board/board.component';
+import { RegisterComponent } from './_components/register/register.component';
+import { AcceptInvitationComponent } from './_components/accept-invitation/accept-invitation.component';
 
 const routes: Routes = [
   {
@@ -18,11 +20,22 @@ const routes: Routes = [
   },
   {
     path : 'board/:id',
-    component : BoardComponent
+    component : BoardComponent,
+    canActivate : [AuthGuard]
   },
   {
     path : 'home',
     component : HomeComponent,
+    canActivate : [AuthGuard]
+  }, 
+  {
+    path: 'register',
+    component : RegisterComponent,
+
+  },
+  {
+    path : 'acceptInvitation',
+    component : AcceptInvitationComponent,
     canActivate : [AuthGuard]
   }
 ];

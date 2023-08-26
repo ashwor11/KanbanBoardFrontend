@@ -41,10 +41,11 @@ export class LoginComponent {
   async submit(){
     const {email,password} = this.f;
     await this._auth.logIn(email,password).subscribe(res=>{
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl(this.returnUrl);
     }, err=>{
       
     });
     
   }
+  
 }

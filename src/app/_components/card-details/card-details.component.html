@@ -1,19 +1,30 @@
-<h1 mat-dialog-title> </h1>
 
 
+<h1 mat-dialog-title class="card-name"><textarea id="card-name-textarea" type="text" [(ngModel)]="data.card.name" [formControl]="cardNameControl" class="editable canWide"> </textarea></h1>
+
+<button class="custom-icon-button" title="Delete card">
+    <mat-icon mat-button mat-dialog-close aria-hidden="false" class="right " aria-label="Example home icon" (click)="deleteCard()" fontIcon="delete_forever"></mat-icon>
+</button>
+
+<hr class="card-title-hr mb-2">
 
     <div mat-dialog-content class="card-details">
-        <h2 class="card-name"><input type="text" [(ngModel)]="data.card.name" class="editable"></h2>
+        
         <div class="job" *ngFor="let job of data.card.jobs">
             
             <app-job [boardId]="boardId" [job]="job"></app-job>
+            <hr class="card-title-hr mb-2">
+          
             
             
         </div>
-        <button>
+        <button class="custom-icon-button" title="Add Job">
             <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="addNewJob()" fontIcon="add_circle_outline"></mat-icon>
         </button>
+        
         
 
         <!-- Repeat the above 'job' structure for each job -->
     </div>
+
+    

@@ -1,10 +1,11 @@
+    <app-navbar></app-navbar>
     <section cdkDropListGroup>
         <div class="kanban-container">
-            <app-column cdkDropList [cdkDropListData]="board.backlog.cards" class="column" (cdkDropListDropped)="drop($event)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.backlog)" [column]="board.backlog"></app-column>
-        <app-column cdkDropList [cdkDropListData]="board.toDo.cards" class="column" (cdkDropListDropped)="drop($event)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.toDo)" [column]="board.toDo"></app-column>
-        <app-column cdkDropList [cdkDropListData]="board.inProgress.cards" class="column" (cdkDropListDropped)="drop($event)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.inProgress)" [column]="board.inProgress"></app-column>
-        <app-column cdkDropList [cdkDropListData]="board.review.cards" class="column" (cdkDropListDropped)="drop($event)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.review)" [column]="board.review"></app-column>
-        <app-column cdkDropList [cdkDropListData]="board.done.cards" class="column" (cdkDropListDropped)="drop($event)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.done)" [column]="board.done"></app-column>
+            <app-column cdkDropList [cdkDropListData]="board.backlog.cards" class="column" (cdkDropListDropped)="drop($event,board.backlog.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.backlog)" [column]="board.backlog"></app-column>
+        <app-column cdkDropList [cdkDropListData]="board.toDo.cards" class="column" (cdkDropListDropped)="drop($event,board.toDo.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.toDo)" [column]="board.toDo"></app-column>
+        <app-column cdkDropList [cdkDropListData]="board.inProgress.cards" class="column" (cdkDropListDropped)="drop($event,board.inProgress.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.inProgress)" [column]="board.inProgress"></app-column>
+        <app-column cdkDropList [cdkDropListData]="board.review.cards" class="column" (cdkDropListDropped)="drop($event,board.review.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.review)" [column]="board.review"></app-column>
+        <app-column cdkDropList [cdkDropListData]="board.done.cards" class="column" (cdkDropListDropped)="drop($event,board.done.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.done)" [column]="board.done"></app-column>
         </div>
 
     </section>

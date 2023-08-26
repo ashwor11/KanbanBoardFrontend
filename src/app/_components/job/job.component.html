@@ -1,13 +1,20 @@
 
 <div class="job-details">
-    <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="addNewFeedback()" fontIcon="add_circle_outline"></mat-icon>
+    <button class="custom-icon-button" title="Add feedback">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="addNewFeedback()" fontIcon="add_circle_outline"></mat-icon>
+    </button>
+    <button class="custom-icon-button" title="Delete Job">
+        <mat-icon aria-hidden="false" aria-label="Delete icon" (click)="deleteJob()" fontIcon="delete_forever"></mat-icon>
+    </button>
+    
     <br>
-    <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin"><input type="text" [(ngModel)]="job.description" class="editable"></mat-checkbox>
+    <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin"><input type="text" [(ngModel)]="job.description" class="editable" [formControl]="jobDescriptionControl"></mat-checkbox>
     <div class="feedbacks">
         <div class="feedback" *ngFor="let feedback of job.feedbacks">
-            <app-feedback [feedback]="feedback"></app-feedback>
+            <app-feedback [boardId]="boardId" [feedback]="feedback" ></app-feedback>
         </div>
     </div>
+
 </div>
 
 

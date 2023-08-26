@@ -13,7 +13,6 @@ export class HomeComponent {
   boards !: Board[];
 constructor(
   private router : Router,
-  private _auth : AuthenticationService,
   private _board : BoardService
 ) { }
  ngOnInit() {

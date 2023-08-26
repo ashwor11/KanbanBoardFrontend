@@ -1,6 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, DoCheck, EventEmitter, Inject, OnChanges, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { Card } from 'src/app/_models/card';
 import { Job } from 'src/app/_models/job';
 import { BoardService } from 'src/app/_services/board/board.service';
 
@@ -11,12 +14,45 @@ import { BoardService } from 'src/app/_services/board/board.service';
   
   
 })
-export class CardDetailsComponent {
+export default class CardDetailsComponent  implements AfterViewInit, OnInit{
+  public cardNameControl !: FormControl;
+  boardId : number = Number(this.data.route.snapshot.paramMap.get('id'));
+
+  @Output() deleteCardEvent : EventEmitter<Card> = new EventEmitter<Card>()
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<CardDetailsComponent>, private _boardService : BoardService){
   }
+  ngAfterViewInit(): void {
+    
+    this.cardNameControl.valueChanges
+      .pipe(
+        debounceTime(400),
+        switchMap(term =>{
+          return this._boardService.changeCardName(this.boardId,this.data.card)}
+          )
+      )
+      .subscribe();
+  }
+  
+  ngOnInit(): void {
+    this.cardNameControl = new FormControl('');
+  }
+  
 
-   boardId : number = Number(this.data.route.snapshot.paramMap.get('id'));
+
+  ngOnChanges(){
+    
+    this.cardNameControl.valueChanges
+      .pipe(
+        debounceTime(400),
+        switchMap(term =>{
+          return this._boardService.changeCardName(this.boardId,this.data.card)}
+          )
+      )
+      .subscribe();
+  }
+
    
   addNewJob(){
     console.log(this.boardId)
@@ -27,7 +63,29 @@ export class CardDetailsComponent {
       this._boardService.changeJobDescription(this.boardId,result).subscribe(res =>{})
       this.data.card.jobs.push(result);
     })
-    
+
+  }
+
+  
+
+  changeCardName(event : any){
+      
+    event.
+    debounceTime().
+    distinctUntilChanged().
+    switchMap((value : string)=>{
+      return this._boardService.changeCardName(this.boardId,this.data.card)
+    })
+    .subscribe();
+  }
+
+  deleteCard() {
+    this._boardService.deleteCard(this.boardId,this.data.card).subscribe(result=>{
+      
+        this.deleteCardEvent.emit(this.data.card);
+
+      
+    });
   }
 
  

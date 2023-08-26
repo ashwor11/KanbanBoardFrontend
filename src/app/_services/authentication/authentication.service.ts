@@ -9,6 +9,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticationService {
+   
+  
 
   public personSubject: BehaviorSubject<Person|null>;
 
@@ -39,6 +41,29 @@ export class AuthenticationService {
       localStorage.setItem('person', JSON.stringify(person));
       return person;
     }))
+  }
+
+  register(email: string, password: string, firstName: string, lastName: string, confirmPassword: string) {
+    const url : string = `${environment.apiUrl}auth/register`
+    const body : any ={email:email, password : password, confirmPassword : confirmPassword,firstName:firstName, lastName: lastName }
+
+    return this.http.post<any>(url,body)
+    .pipe(map(res=>{
+      const person : Person ={
+        id : res.id,
+        firstName : res.firstName,
+        lastName : res.lastName,
+        email : res.email,
+        access_token : res.accessToken.token
+      };
+      this.personSubject.next(person);
+      localStorage.setItem('person',JSON.stringify(person));
+      return person;
+    }))
+  }
+
+  logOff(){
+    localStorage.removeItem('person');
   }
 }
 

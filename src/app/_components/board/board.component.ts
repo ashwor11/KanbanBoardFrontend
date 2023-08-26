@@ -4,7 +4,7 @@ import {CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem} from '@
 import { BoardService } from 'src/app/_services/board/board.service';
 import { Board } from 'src/app/_models/board';
 import { MatDialog } from '@angular/material/dialog';
-import { CardDetailsComponent } from '../card-details/card-details.component';
+import CardDetailsComponent from '../card-details/card-details.component';
 import { Card } from 'src/app/_models/card';
 import { Column } from 'src/app/_models/column';
 import { MatCardModule } from '@angular/material/card';
@@ -75,7 +75,7 @@ export class BoardComponent {
   
   
   
-    drop(event: CdkDragDrop<any>) {
+    drop(event: CdkDragDrop<any>, status: string) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -86,6 +86,8 @@ export class BoardComponent {
         event.currentIndex,
       );
     }
+    let card : Card = event.item.data as Card;
+    this._boardService.changeCardStatus(this.board.id,card,status).subscribe();
   }
 
   
