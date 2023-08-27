@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Select a Person</h2>
+<mat-dialog-content>
+  <mat-list>
+    <mat-list-item *ngFor="let person of data.persons" (click)="assignPerson(person)">
+      {{ person.firstName }} {{ person.lastName }}
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="removeAssignedPerson()" mat-button mat-dialog-close>Cancel Assign</button>
+</mat-dialog-actions>

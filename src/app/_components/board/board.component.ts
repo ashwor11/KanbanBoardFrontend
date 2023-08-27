@@ -38,6 +38,7 @@ export class BoardComponent {
     getBoard(boardId : number){
       this._boardService.getBoardById(boardId).subscribe(result=>{
         this.board = result;
+        console.log(this.board)
       }, err=>{});
       this.board.backlog.status = 0
       this.board.toDo.status = 1

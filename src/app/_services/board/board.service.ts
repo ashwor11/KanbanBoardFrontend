@@ -6,11 +6,18 @@ import { Observable, catchError, map, pipe } from 'rxjs';
 import { Card } from 'src/app/_models/card';
 import { Job } from 'src/app/_models/job';
 import { Feedback } from 'src/app/_models/feedback';
+import { Person } from 'src/app/_models/person';
+import { PersonForBoard } from 'src/app/_models/personForBoard';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
+
+
+  
+  
+  
   
   
   
@@ -223,6 +230,55 @@ export class BoardService {
     }
     return this.http.get(url,options);
     
+  }
+
+  changeCardColor(boardId: number, card: any, color: string) {
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/changeColor`
+    let body = JSON.stringify(color);
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.post(url,body,options);
+
+  }
+
+  assignPersonToCard(boardId: number, card: any, person: PersonForBoard) {
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/assignPerson`
+    let body = JSON.stringify(person.id);
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.post(url,body,options);
+  }
+
+  removeAssignedPerson(boardId: number, card: any){
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/removeAssignedPerson`
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.get(url,options);
+  }
+
+  assignDueDate(boardId: number, card: Card, date: Date) {
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/assignDueDate`
+    let body = JSON.stringify(date);
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.post(url,body,options);
+  }
+
+  removeAssignedDueDate(boardId: number, card:Card){
+    const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/removeAssignedDueDate`
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.get(url,options);
   }
 
   

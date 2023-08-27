@@ -1,6 +1,13 @@
 export class PersonForBoard{
     id !: number;
     firstName !: string;
-    lastName !: number;
+    lastName !: string;
     email !: string;
+
+    constructor(){
+        this.id = 0;
+        this.firstName ='';
+        this.lastName = '';
+        this.email = '';
+    }
 }

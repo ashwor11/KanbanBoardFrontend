@@ -26,6 +26,18 @@ import { RegisterComponent } from './_components/register/register.component';
 import { InviteToBoardComponent } from './_components/invite-to-board/invite-to-board.component';
 import { FeedbackComponent } from './_components/feedback/feedback.component';
 import { AcceptInvitationComponent } from './_components/accept-invitation/accept-invitation.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {PortalModule} from '@angular/cdk/portal';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxColorsModule } from 'ngx-colors';
+import { ColorPickerComponent } from './_components/color-picker/color-picker.component';
+import {MatListModule} from '@angular/material/list';
+import { CalendarModule } from 'primeng/calendar';
+
+
+
+
+
 
 
 
@@ -43,7 +55,9 @@ export const COMPONENTS : any[] = [
     RegisterComponent,
     InviteToBoardComponent,
     FeedbackComponent,
-    AcceptInvitationComponent
+    AcceptInvitationComponent,
+    ColorPickerComponent
+    
     
 ];
 
@@ -59,8 +73,13 @@ export const MODULES : any[] = [
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    MatFormFieldModule
-
+    MatFormFieldModule,
+    MatMenuModule,
+    PortalModule,
+    BrowserAnimationsModule,
+    NgxColorsModule,
+    MatListModule,
+    CalendarModule
 ];
 
 export const PROVIDERS : any[] = [

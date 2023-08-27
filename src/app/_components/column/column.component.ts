@@ -4,6 +4,8 @@ import { Card } from 'src/app/_models/card';
 import { Column } from 'src/app/_models/column';
 import CardDetailsComponent from '../card-details/card-details.component';
 import { ActivatedRoute } from '@angular/router';
+import { Person } from 'src/app/_models/person';
+import { PersonForBoard } from 'src/app/_models/personForBoard';
 
 @Component({
   selector: 'app-column',
@@ -13,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ColumnComponent {
 
   @Input() column !: Column 
-  @Output() DeleteCardEvent : EventEmitter<Card> = new EventEmitter<Card>()
+  @Input() persons !: PersonForBoard[]
 
   constructor(private dialog : MatDialog, private route : ActivatedRoute){}
 
@@ -23,8 +25,11 @@ export class ColumnComponent {
        height: '90%',
        data :{
         card : card,
-        route : this.route
-      }
+        route : this.route,
+        persons : this.persons
+      },
+      
+      
        
      })
      dialogRef.componentInstance.deleteCardEvent.subscribe((data)=>{

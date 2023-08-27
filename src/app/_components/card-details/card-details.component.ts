@@ -1,11 +1,17 @@
 import { AfterContentInit, AfterViewInit, Component, DoCheck, EventEmitter, Inject, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { Card } from 'src/app/_models/card';
 import { Job } from 'src/app/_models/job';
 import { BoardService } from 'src/app/_services/board/board.service';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { AssignPersonComponent } from '../assign-person/assign-person.component';
+import { AssignDueDateComponent } from '../assign-due-date/assign-due-date.component';
+
 
 @Component({
   selector: 'app-card-details',
@@ -21,7 +27,11 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
   @Output() deleteCardEvent : EventEmitter<Card> = new EventEmitter<Card>()
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<CardDetailsComponent>, private _boardService : BoardService){
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private ref:MatDialogRef<CardDetailsComponent>, private _boardService : BoardService, private dialog:MatDialog){
+  }
+  
+  ngOnInit(): void {
+    this.cardNameControl = new FormControl('');
   }
   ngAfterViewInit(): void {
     
@@ -35,25 +45,34 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
       .subscribe();
   }
   
-  ngOnInit(): void {
-    this.cardNameControl = new FormControl('');
-  }
-  
-
-
-  ngOnChanges(){
-    
-    this.cardNameControl.valueChanges
-      .pipe(
-        debounceTime(400),
-        switchMap(term =>{
-          return this._boardService.changeCardName(this.boardId,this.data.card)}
-          )
-      )
-      .subscribe();
+  openAssignPerson(){
+    let dialogRef = this.dialog.open(AssignPersonComponent,{
+      width: '40%',
+      height: '30%',
+      data :{
+       card : this.data.card,
+       route : this.data.route,
+       persons : this.data.persons
+     },
+     
+     
+    })
   }
 
-   
+  openAssignDate(){
+    let dialogRef = this.dialog.open(AssignDueDateComponent,{
+      width: '60%',
+      height: '60%',
+      data :{
+       card : this.data.card,
+       route : this.data.route,
+     },
+     
+     
+    })
+  }
+
+
   addNewJob(){
     console.log(this.boardId)
     let writtenByPersonId = Number(JSON.parse(localStorage.getItem("person")!).id);
@@ -65,8 +84,6 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
     })
 
   }
-
-  
 
   changeCardName(event : any){
       
@@ -86,6 +103,13 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
 
       
     });
+  }
+
+  changeCardColor(color : string){
+    
+    this._boardService.changeCardColor(this.boardId,this.data.card, color).subscribe(result=>{
+      this.data.card.color = color;
+    })
   }
 
  

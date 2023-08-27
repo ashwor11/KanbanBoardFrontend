@@ -7,7 +7,7 @@ export class Card{
     status !: string;
     assignedPersonId ?: number;
     isReassigned ?: boolean;
-    color ?: number;
+    color ?: string;
     assignedDate ?: Date | null;
     dueDate ?: Date | null;
     finishDate ?: Date | null;
@@ -19,10 +19,11 @@ export class Card{
         this.jobs = [];
         this.feedbacks = [];
         this.isReassigned = false;
-        this.color = 0;
+        this.color = '#b1bbc9';
         this.assignedDate = null;
         this.dueDate = null;
         this.finishDate = null
+        this.assignedPersonId = 0
         
     }
     

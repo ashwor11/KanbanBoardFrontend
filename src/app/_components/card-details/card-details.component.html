@@ -1,6 +1,27 @@
 
 
+
+<div [ngStyle]="{'background-color': data.card.color}">
+
+
+
 <h1 mat-dialog-title class="card-name"><textarea id="card-name-textarea" type="text" [(ngModel)]="data.card.name" [formControl]="cardNameControl" class="editable canWide"> </textarea></h1>
+
+<app-color-picker class="top-left" (changeCardColorEvent)="changeCardColor($event)" [color]="data.card.color"></app-color-picker>
+<button class="top-right custom-icon-button-grey" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openAssignPerson()">
+      <mat-icon>assignment_ind</mat-icon>
+      <span>Assign Person</span>
+    </button>
+    <button mat-menu-item (click)="openAssignDate()">
+      <mat-icon>timer</mat-icon>
+      <span>Assign due date</span>
+    </button>
+  </mat-menu>
+
 
 <button class="custom-icon-button" title="Delete card">
     <mat-icon mat-button mat-dialog-close aria-hidden="false" class="right " aria-label="Example home icon" (click)="deleteCard()" fontIcon="delete_forever"></mat-icon>
@@ -26,5 +47,8 @@
 
         <!-- Repeat the above 'job' structure for each job -->
     </div>
+
+</div>
+    
 
     
