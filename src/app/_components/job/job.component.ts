@@ -57,4 +57,8 @@ export class JobComponent implements OnInit, AfterViewInit {
   deleteJob(){
     this._boardService.deleteJob(this.boardId,this.job).subscribe();
   }
+
+  deleteFeedback(feedback : Feedback){
+    this.job.feedbacks.splice(this.job.feedbacks.indexOf(feedback),1);
+  }
 }

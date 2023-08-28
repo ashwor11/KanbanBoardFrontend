@@ -1,7 +1,7 @@
 
 
 
-<div [ngStyle]="{'background-color': data.card.color}">
+<div class="card-details-dialog" [ngStyle]="{'border-color': data.card.color}">
 
 
 
@@ -34,9 +34,6 @@
         <div class="job" *ngFor="let job of data.card.jobs">
             
             <app-job [boardId]="boardId" [job]="job"></app-job>
-            <hr class="card-title-hr mb-2">
-          
-            
             
         </div>
         <button class="custom-icon-button" title="Add Job">

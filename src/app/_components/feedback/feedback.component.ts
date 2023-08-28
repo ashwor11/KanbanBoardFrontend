@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { Feedback } from 'src/app/_models/feedback';
@@ -15,7 +15,7 @@ export class FeedbackComponent implements OnInit, AfterViewInit
   feedbackContentControl !: FormControl
   @Input() feedback !: Feedback;
   @Input() boardId !: number;
-
+  @Output() deleteFeedbackEvent : EventEmitter<Feedback> = new EventEmitter<Feedback>();
 
   constructor(private _boardService : BoardService){}
   ngAfterViewInit(): void {
@@ -39,7 +39,9 @@ export class FeedbackComponent implements OnInit, AfterViewInit
   }
 
   deleteFeedback(){
-    this._boardService.deleteJobFeedback(this.boardId, this.feedback).subscribe();
+    this._boardService.deleteJobFeedback(this.boardId, this.feedback).subscribe(result=>{
+      this.deleteFeedbackEvent.emit(this.feedback);
+    });
 
   }
 }

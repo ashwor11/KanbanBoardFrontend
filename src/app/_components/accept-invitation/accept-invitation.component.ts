@@ -15,6 +15,8 @@ export class AcceptInvitationComponent {
     let invitationAcceptToken : string  |null = this.route.snapshot.queryParamMap.get("InvitationAcceptToken") ;
     this._boardService.acceptBoardInvitation(invitationAcceptToken).subscribe(result=>{
       this.router.navigate(['/home']);
+    },err=>{
+      alert(err.details.message)
     })
   }
 }

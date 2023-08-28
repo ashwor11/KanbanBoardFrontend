@@ -23,7 +23,6 @@ hr.card-title-hr {
 
 .card-name {
     font-size: 24px;
-    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
 
@@ -36,6 +35,8 @@ hr.card-title-hr {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    border : 1px solid grey;
+    border-radius : 3px;
 }
 
 .job-status {
@@ -61,5 +62,10 @@ hr.card-title-hr {
 
 .job-description {
     font-size: 16px;
+}
+
+.card-details-dialog{
+    border-top: 25px solid;
+     border-radius : 5px;
 }
 

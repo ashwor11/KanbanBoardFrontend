@@ -25,11 +25,7 @@ export class CardComponent implements OnInit{
   constructor(private dialog : MatDialog, private route : ActivatedRoute, private _boardService : BoardService) {}
 
   ngOnInit() : void{
-    if(this.card.assignedPersonId){
-      console.log(this.persons);
-      this.person = new PersonForBoard();
-      this.person = this.persons.find(person => person.id === this.card.assignedPersonId);
-    }
+    
   }
 
   boardId : number = Number(this.route.snapshot.paramMap.get('id'))
@@ -45,8 +41,5 @@ export class CardComponent implements OnInit{
     }
   }
 
-  ondeleteCardEvent(item : any){
-    debugger
-    console.log("delted");
-  }
+  
 }

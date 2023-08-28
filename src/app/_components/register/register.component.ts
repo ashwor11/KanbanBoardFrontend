@@ -42,7 +42,7 @@ export class RegisterComponent {
   async submit(){
     const {email,password, firstName, lastName, confirmPassword} = this.f;
     await this._auth.register(email,password,firstName, lastName, confirmPassword).subscribe(res=>{
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl(this.returnUrl);
     }, err=>{
       
     });

@@ -13,6 +13,7 @@ export class Card{
     finishDate ?: Date | null;
     feedbacks ?: Feedback[];
     jobs ?: Job[];
+    assignedPersonName?: string;
 
     constructor(name : string) {
         this.name = name;

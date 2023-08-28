@@ -47,5 +47,11 @@ export class LoginComponent {
     });
     
   }
+
+  directToRegister(){
+    this.router.navigate(['/register'], { queryParams: { returnUrl: this.returnUrl } });
+  }
+
+} 
+
   
-}

@@ -21,6 +21,7 @@ export class AssignPersonComponent {
   assignPerson(person : PersonForBoard){
     this._boardService.assignPersonToCard(this.boardId,this.data.card,person).subscribe(result=>{
       this.data.card.assignedPersonId = person.id;
+      this.data.card.assignedPersonName = person.firstName + " " + person.lastName;
       alert(`Card assigned to ${person.firstName} ${person.lastName}`);
     })
   }
@@ -28,6 +29,7 @@ export class AssignPersonComponent {
   removeAssignedPerson(){
     this._boardService.removeAssignedPerson(this.boardId,this.data.card).subscribe(result=>{
       this.data.card.assignedPersonId = null;
+      this.data.card.assignedPersonName = null;
       alert(`Assign removed.`);
     })
   }
