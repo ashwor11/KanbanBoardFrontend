@@ -3,7 +3,8 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import url(https://db.onlinewebfonts.com/c/22b044be38a057a10bf4b457c31a1729?family=TiemposText-Semibold);
-
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+  
 .prevent-select {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -15,4 +16,29 @@
     border-top: 5px solid;
      border-radius : 5px;
       border-color : attr(color);
+  }
+
+
+
+  .grow-wrap {
+    display: grid;
+  }
+  .grow-wrap::after {
+    content: attr(data-replicated-value) " ";
+  
+    white-space: pre-wrap;
+  
+    visibility: hidden;
+  }
+  .grow-wrap  > textarea {
+    resize: none;
+  
+    overflow: hidden;
+  }
+  .grow-wrap > textarea,
+  .grow-wrap::after {
+    
+  
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
   }

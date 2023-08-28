@@ -47,8 +47,10 @@ body {
     margin-right: 10px;
 }
 
-.job-description {
-    font-size: 16px;
+.job-description > textarea{
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color : #323b4a;
 }
 
 .feedback{
@@ -60,7 +62,31 @@ body {
     justify-content: space-between;
 }
 
+.job-info{
+    min-width: 95%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: green;
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+}
+.job-description{
+    min-width: 95%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    overflow: hidden;
+    position: relative;
+}
+
 .feedbacks{
+    position: relative;
+    left: 10%;
     
+}
+
+.wrapper{
+    display: block;
 }
 

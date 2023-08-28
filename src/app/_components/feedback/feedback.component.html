@@ -1,8 +1,8 @@
 <section *ngIf="isUserAuthorized(feedback.writtenByPersonId); else notAuthorized">
     <p >
-        <input type="text" [(ngModel)]="feedback.content" [formControl]="feedbackContentControl" class="editable"> 
+        <input type="text" id="feedback-input" [(ngModel)]="feedback.content" [formControl]="feedbackContentControl" class="editable"> 
         <button class="custom-icon-button" title="Delete Feedback">
-            <mat-icon aria-hidden="false" (click)="deleteFeedback()" aria-label="Example home icon" fontIcon="delete_forever"></mat-icon>
+            <mat-icon id="delete-feedback-icon" aria-hidden="false" (click)="deleteFeedback()" aria-label="Example home icon" fontIcon="delete_forever"></mat-icon>
         </button>
         
     </p>

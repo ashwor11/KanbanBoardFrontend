@@ -5,10 +5,11 @@
 
 
 
-<h1 mat-dialog-title class="card-name"><textarea id="card-name-textarea" type="text" [(ngModel)]="data.card.name" [formControl]="cardNameControl" class="editable canWide"> </textarea></h1>
-
+<div class="grow-wrap card-details-title"> 
+    <textarea id="card-name-textarea" type="text" [(ngModel)]="data.card.name" [formControl]="cardNameControl" class="editable " onfocus="this.parentNode.dataset.replicatedValue = this.value" onInput="this.parentNode.dataset.replicatedValue = this.value"> </textarea>
+  </div>
 <app-color-picker class="top-left" (changeCardColorEvent)="changeCardColor($event)" [color]="data.card.color"></app-color-picker>
-<button class="top-right custom-icon-button-grey" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<button class="top-right custom-icon-button-black" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">

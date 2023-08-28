@@ -11,13 +11,27 @@
     
     
     <br>
-    <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin"><input type="text" [(ngModel)]="job.description" class="editable" [formControl]="jobDescriptionControl"></mat-checkbox>
-
-    <div class="feedbacks">
-        <div class="feedback" *ngFor="let feedback of job.feedbacks">
-            <app-feedback (deleteFeedbackEvent)="deleteFeedback($event)" [boardId]="boardId" [feedback]="feedback" ></app-feedback>
+    <div id="wrapper">
+        <div class="job-info">
+            <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin">
+                <div class="grow-wrap job-description"> 
+                    <textarea id="job-description-textarea" type="text" [(ngModel)]="job.description" [formControl]="jobDescriptionControl" class="editable " onfocus="this.parentNode.dataset.replicatedValue = this.value" onInput="this.parentNode.dataset.replicatedValue = this.value"> </textarea>
+                  </div>
+                
+            
+            </mat-checkbox>
         </div>
+
+        <div class="feedbacks">
+            <div class="feedback" *ngFor="let feedback of job.feedbacks">
+                <app-feedback (deleteFeedbackEvent)="deleteFeedback($event)" [boardId]="boardId" [feedback]="feedback" ></app-feedback>
+            </div>
+        </div>
+        
+    
+        
     </div>
+    
 
 </div>
 

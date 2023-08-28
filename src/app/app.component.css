@@ -2,6 +2,7 @@
     border:none;
     outline:none;
     background:transparent;
+    box-sizing: border-box;
  }
 
 
@@ -44,9 +45,9 @@
    border: none;
    cursor: pointer;
  }
- .custom-icon-button-grey {
+ .custom-icon-button-black {
    font-size: 24px;
-   color: grey;
+   color: black;
    background-color: transparent;
    border: none;
    cursor: pointer;
@@ -64,12 +65,12 @@
 
  .top-right {
    position: absolute;
-   top : 2%;
+   top : 4%;
    right: 2%;
  }
  
  .top-left{
-   position: absolute;
+   position: relative;
    top : 2%;
    left : 2%;
  }
