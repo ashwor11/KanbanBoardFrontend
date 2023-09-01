@@ -133,12 +133,17 @@ export class BoardService {
 
     return this.http.post<Feedback>(url,body,options)
     .pipe(map(result =>{
+      var person = JSON.parse(localStorage.getItem('person')!);
+
       const feedback : Feedback ={
         content : result.content,
         id : result.id,
-        writtenByPersonId : result.writtenByPersonId
+        writtenByPersonId : result.writtenByPersonId,
+        writtenByPersonName : person.firstName + " " + person.lastName
+
 
       }
+      
       return feedback;
     }));
   }

@@ -117,4 +117,5 @@ body {
     font-family: "TiemposText-Semibold";
     font-size: 15px;
     text-align: center;
+    cursor: context-menu;
 }

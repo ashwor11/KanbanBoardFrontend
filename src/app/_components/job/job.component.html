@@ -15,14 +15,14 @@
         <div class="job-info">
             <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob()" style="border:none; outline: none;" class="example-margin">
                 <div class="grow-wrap job-description"> 
-                    <textarea id="job-description-textarea" type="text" [(ngModel)]="job.description" [formControl]="jobDescriptionControl" class="editable " onfocus="this.parentNode.dataset.replicatedValue = this.value" onInput="this.parentNode.dataset.replicatedValue = this.value"> </textarea>
+                    <textarea id="job-description-textarea" cols="68" rows="1"   class="editable" type="text" [(ngModel)]="job.description" [formControl]="jobDescriptionControl"  onfocus="this.parentNode.dataset.replicatedValue = this.value" onInput="this.parentNode.dataset.replicatedValue = this.value"> </textarea>
                   </div>
                 
             
             </mat-checkbox>
         </div>
-
-        <div class="feedbacks">
+        <hr class="feedback-divider">
+        <div class="feedbacks" >
             <div class="feedback" *ngFor="let feedback of job.feedbacks">
                 <app-feedback (deleteFeedbackEvent)="deleteFeedback($event)" [boardId]="boardId" [feedback]="feedback" ></app-feedback>
             </div>

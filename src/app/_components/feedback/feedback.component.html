@@ -1,15 +1,24 @@
 <section *ngIf="isUserAuthorized(feedback.writtenByPersonId); else notAuthorized">
-    <p >
-        <input type="text" id="feedback-input" [(ngModel)]="feedback.content" [formControl]="feedbackContentControl" class="editable"> 
+    
+        <div class="grow-wrap"> 
+            <textarea id="job-description-textarea" cols="68" rows="1"   class="editable" type="text"  [(ngModel)]="feedback.content" [formControl]="feedbackContentControl"  onfocus="this.parentNode.dataset.replicatedValue = this.value" onInput="this.parentNode.dataset.replicatedValue = this.value"> </textarea>
+          </div>
+        
         <button class="custom-icon-button" title="Delete Feedback">
             <mat-icon id="delete-feedback-icon" aria-hidden="false" (click)="deleteFeedback()" aria-label="Example home icon" fontIcon="delete_forever"></mat-icon>
         </button>
+        <small class="right"> -{{feedback.writtenByPersonName}}</small>
         
-    </p>
     
 
 </section> 
 
 
-<ng-template #notAuthorized> <p class="editable">{{feedback.content}}</p></ng-template>
-<small class="right"> written by user with id{{feedback.writtenByPersonId}}</small>
+<ng-template #notAuthorized>
+    <div class="grow-wrap"> 
+        <textarea disabled class="editable">{{feedback.content}}</textarea>
+        <small class="right block"> -{{feedback.writtenByPersonName}}</small>
+    </div>
+    
+</ng-template>
+

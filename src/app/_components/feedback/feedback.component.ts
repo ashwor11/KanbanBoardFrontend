@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { Feedback } from 'src/app/_models/feedback';
 import { BoardService } from 'src/app/_services/board/board.service';
@@ -7,7 +8,7 @@ import { BoardService } from 'src/app/_services/board/board.service';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css']
+  styleUrls: ['./feedback.component.css'],
 })
 export class FeedbackComponent implements OnInit, AfterViewInit
 {

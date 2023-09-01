@@ -33,6 +33,9 @@ import { NgxColorsModule } from 'ngx-colors';
 import { ColorPickerComponent } from './_components/color-picker/color-picker.component';
 import {MatListModule} from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -79,7 +82,8 @@ export const MODULES : any[] = [
     BrowserAnimationsModule,
     NgxColorsModule,
     MatListModule,
-    CalendarModule
+    CalendarModule,
+    MatChipsModule,
 ];
 
 export const PROVIDERS : any[] = [

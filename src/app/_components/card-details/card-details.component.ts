@@ -45,6 +45,7 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
       .subscribe();
   }
   
+  
   openAssignPerson(){
     let dialogRef = this.dialog.open(AssignPersonComponent,{
       width: '40%',
@@ -110,6 +111,10 @@ export default class CardDetailsComponent  implements AfterViewInit, OnInit{
     this._boardService.changeCardColor(this.boardId,this.data.card, color).subscribe(result=>{
       this.data.card.color = color;
     })
+  }
+
+  deleteJob(job : Job){
+    this.data.card.jobs.splice(this.data.card.jobs.indexOf(job),1);
   }
 
  

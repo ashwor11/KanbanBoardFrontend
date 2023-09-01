@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject } from '@angular/core';
 import CardDetailsComponent from '../card-details/card-details.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BoardService } from 'src/app/_services/board/board.service';
 import { Person } from 'src/app/_models/person';
 import { PersonForBoard } from 'src/app/_models/personForBoard';
+import { MatChipSelectionChange } from '@angular/material/chips';
 
 @Component({
   selector: 'app-assign-person',
@@ -22,7 +23,6 @@ export class AssignPersonComponent {
     this._boardService.assignPersonToCard(this.boardId,this.data.card,person).subscribe(result=>{
       this.data.card.assignedPersonId = person.id;
       this.data.card.assignedPersonName = person.firstName + " " + person.lastName;
-      alert(`Card assigned to ${person.firstName} ${person.lastName}`);
     })
   }
 
@@ -30,8 +30,16 @@ export class AssignPersonComponent {
     this._boardService.removeAssignedPerson(this.boardId,this.data.card).subscribe(result=>{
       this.data.card.assignedPersonId = null;
       this.data.card.assignedPersonName = null;
-      alert(`Assign removed.`);
     })
+  }
+
+  handleSelection(event : MatChipSelectionChange, person : PersonForBoard){
+    if(event.selected === true){
+      this.assignPerson(person)
+    }
+    else{
+      this.removeAssignedPerson();
+    }
   }
 
 }

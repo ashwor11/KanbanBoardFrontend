@@ -5,3 +5,8 @@
 #feedback-input{
     display: inline-block;
 }
+
+.block{
+    display: block;
+    position: relative;
+}

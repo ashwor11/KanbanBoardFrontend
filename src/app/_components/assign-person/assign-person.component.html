@@ -1,11 +1,30 @@
 <h2 mat-dialog-title>Select a Person</h2>
 <mat-dialog-content>
-  <mat-list>
-    <mat-list-item *ngFor="let person of data.persons" (click)="assignPerson(person)">
-      {{ person.firstName }} {{ person.lastName }}
-    </mat-list-item>
-  </mat-list>
+
+  <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+
+    <section *ngIf="!data.card.assignedPersonId; else assigned">
+      <mat-chip-option *ngFor="let person of data.persons" color="primary" (selectionChange)="handleSelection($event, person)" >{{person.firstName}} {{person.lastName}} </mat-chip-option>
+    </section>
+
+    <ng-template #assigned>
+      <section *ngFor="let person of data.persons" >
+        <mat-chip-option *ngIf="person.id == data.card.assignedPersonId; else notHim"  (selectionChange)="handleSelection($event, person)" selected color="primary" >{{person.firstName}} {{person.lastName}}</mat-chip-option>
+      
+
+      <ng-template #notHim>
+        <mat-chip-option color="primary" (selectionChange)="handleSelection($event, person)" > {{person.firstName}} {{person.lastName}} </mat-chip-option>
+      </ng-template>
+    </section>
+
+    </ng-template>
+
+
+    
+  </mat-chip-listbox>
+
+
+
+  
+  
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button (click)="removeAssignedPerson()" mat-button mat-dialog-close>Cancel Assign</button>
-</mat-dialog-actions>

@@ -34,7 +34,7 @@
         
         <div class="job" *ngFor="let job of data.card.jobs">
             
-            <app-job [boardId]="boardId" [job]="job"></app-job>
+            <app-job (deleteJobEvent)="deleteJob($event)" [boardId]="boardId" [job]="job" [persons]="data.persons"></app-job>
             
         </div>
         <button class="custom-icon-button" title="Add Job">

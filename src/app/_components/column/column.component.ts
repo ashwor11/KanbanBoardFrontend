@@ -41,7 +41,11 @@ export class ColumnComponent implements OnChanges  {
         route : this.route,
         persons : this.persons
       },
-      panelClass:['card-details-dialog']
+      panelClass:['card-details-dialog'],
+
+
+      closeOnNavigation : true,
+      
       
       
        
@@ -50,6 +54,12 @@ export class ColumnComponent implements OnChanges  {
       this.column.cards.splice(this.column.cards.indexOf(card),1);
      })
    }
+
+   deleteCard(item : any){
+    this.column.cards.splice(this.column.cards.indexOf(item.value),1);
+   }
+
+   
   
   
 
