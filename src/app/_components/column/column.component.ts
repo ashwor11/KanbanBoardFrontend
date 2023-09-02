@@ -55,9 +55,7 @@ export class ColumnComponent implements OnChanges  {
      })
    }
 
-   deleteCard(item : any){
-    this.column.cards.splice(this.column.cards.indexOf(item.value),1);
-   }
+   
 
    
   

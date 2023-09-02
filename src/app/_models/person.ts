@@ -4,4 +4,5 @@ export class Person{
     firstName?: string;
     lastName?: string;
     access_token?: string;
+    refresh_token?: string;
 }

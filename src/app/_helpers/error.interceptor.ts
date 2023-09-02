@@ -12,22 +12,45 @@ export class ErrorInterceptor {
 
     
     constructor(private _auth : AuthenticationService, private router: Router) {}
+    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-
+    // if token expired try to refresh it
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
+        // if token expired try to refresh it, if token refreshed successfully then reload the page
         return next.handle(request).pipe(catchError(err => {
             if ([400, 403].includes(err.status) && this._auth.personValue) {
                 alert(err.error.Detail);
                 this.router.navigate(["login"]);
             }
             if ([401].includes(err.status) && this._auth.personValue) {
-                this.router.navigate(["login"]);
-                this._auth.logOff();
-                alert(err.error.Detail);
+                console.log('refreshing token')
+                return this.handle401Error(request, next);
             }
             return throwError(()=>err)
         }))
+
+        
         
     }
+
+    private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        
+            this.refreshTokenSubject.next(null);
+
+            return this._auth.refreshToken().pipe(
+                switchMap((res: any) => {
+                    
+                    this.refreshTokenSubject.next(res);
+                    return next.handle(
+                        request.clone({
+                            setHeaders: {
+                                'Authorization': `Bearer ${res.access_token}`
+                            }
+                        })
+                    );
+                }));
+
+        } 
+        
 }

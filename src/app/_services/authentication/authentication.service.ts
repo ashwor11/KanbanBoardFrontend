@@ -34,7 +34,8 @@ export class AuthenticationService {
         firstName : res.firstName,
         lastName : res.lastName,
         email : res.email,
-        access_token : res.accessToken.token
+        access_token : res.accessToken.token,
+        refresh_token : res.refreshToken
         
       };
       this.personSubject.next(person);
@@ -54,7 +55,8 @@ export class AuthenticationService {
         firstName : res.firstName,
         lastName : res.lastName,
         email : res.email,
-        access_token : res.accessToken.token
+        access_token : res.accessToken.token,
+        refresh_token : res.refreshToken
       };
       this.personSubject.next(person);
       localStorage.setItem('person',JSON.stringify(person));
@@ -62,7 +64,26 @@ export class AuthenticationService {
     }))
   }
 
-  logOff(){
+  refreshToken(){
+    console.log('refreshing token')
+    const url : string = `${environment.apiUrl}auth/refresh`
+    const body : any ={token: this.personValue?.access_token,
+    refreshToken : this.personValue?.refresh_token}
+
+    return this.http.post<any>(url,body)
+    .pipe(map(res=>{
+      const person : Person = localStorage.getItem('person') ? JSON.parse(localStorage.getItem('person')!) : null;
+      person.access_token = res.accessToken.token;
+      person.refresh_token = res.refreshToken;
+      this.personSubject.next(person);
+      localStorage.setItem('person',JSON.stringify(person));
+      
+
+      return person;
+    }))
+  }
+
+  logOut(){
     localStorage.removeItem('person');
   }
 }
