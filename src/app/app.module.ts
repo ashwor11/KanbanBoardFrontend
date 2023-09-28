@@ -10,14 +10,15 @@ import { AcceptInvitationComponent } from './_components/accept-invitation/accep
 import { ColorPickerComponent } from './_components/color-picker/color-picker.component';
 import { AssignPersonComponent } from './_components/assign-person/assign-person.component';
 import { AssignDueDateComponent } from './_components/assign-due-date/assign-due-date.component';
+import { DueDateComponent } from './_components/due-date/due-date.component';
+import { AssignedPersonComponent } from './_components/assigned-person/assigned-person.component';
 
 
 
 @NgModule({
   declarations: [
     COMPONENTS,
-    AssignPersonComponent,
-    AssignDueDateComponent,
+    
 
     
     

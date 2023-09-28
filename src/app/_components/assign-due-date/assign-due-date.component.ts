@@ -36,7 +36,7 @@ export class AssignDueDateComponent implements OnInit, AfterViewInit{
   assignDueDate(date : Date){
     this._boardService.assignDueDate(this.boardId, this.data.card,date).subscribe(result=>{
       this.data.card.dueDate = date;
-      alert('assigned due date');
+      alert(`assigned due date` );
 
     });
   }

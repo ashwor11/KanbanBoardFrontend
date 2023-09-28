@@ -35,6 +35,10 @@ import {MatListModule} from '@angular/material/list';
 import { CalendarModule } from 'primeng/calendar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonModule} from '@angular/material/button';
+import { AssignPersonComponent } from './_components/assign-person/assign-person.component';
+import { AssignDueDateComponent } from './_components/assign-due-date/assign-due-date.component';
+import { DueDateComponent } from './_components/due-date/due-date.component';
+import { AssignedPersonComponent } from './_components/assigned-person/assigned-person.component';
 
 
 
@@ -59,7 +63,11 @@ export const COMPONENTS : any[] = [
     InviteToBoardComponent,
     FeedbackComponent,
     AcceptInvitationComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    AssignPersonComponent,
+    AssignDueDateComponent,
+    DueDateComponent,
+    AssignedPersonComponent,
     
     
 ];
@@ -84,6 +92,7 @@ export const MODULES : any[] = [
     MatListModule,
     CalendarModule,
     MatChipsModule,
+    
 ];
 
 export const PROVIDERS : any[] = [

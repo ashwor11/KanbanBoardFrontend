@@ -17,7 +17,7 @@ export class CardComponent implements OnInit{
   @Input()card !: Card;
   @Input() persons !: PersonForBoard[]
   
-  person ?: PersonForBoard ;
+  person ?: PersonForBoard | null;
 
   @Output() DeleteCardEvent : EventEmitter<Card> = new EventEmitter<Card>()
 
@@ -25,7 +25,7 @@ export class CardComponent implements OnInit{
   constructor(private dialog : MatDialog, private route : ActivatedRoute, private _boardService : BoardService) {}
 
   ngOnInit() : void{
-    
+    this.person = this.persons.find(p => p.id == this.card.assignedPersonId);
   }
 
   boardId : number = Number(this.route.snapshot.paramMap.get('id'))

@@ -2,8 +2,9 @@
 <div mat-raised-button *ngFor="let job of card.jobs">
     <mat-checkbox [(ngModel)]="job.isDone" (change)="markJob(job)" (click)="$event.stopPropagation()"  class="example-margin">{{job.description}}</mat-checkbox>
 </div>
-    <div *ngIf="card.dueDate" class="green-box">due {{card.dueDate | date}}</div>
-    <div *ngIf="card.assignedPersonId" class="blue-box">assigned to {{card.assignedPersonName}}</div>
+    <app-due-date *ngIf="card.dueDate"   [dueDate]="card.dueDate" ></app-due-date>
+    
+    <app-assigned-person *ngIf="card.assignedPersonId"    [person]="person">assigned to {{card.assignedPersonName}}</app-assigned-person>
 
     
     

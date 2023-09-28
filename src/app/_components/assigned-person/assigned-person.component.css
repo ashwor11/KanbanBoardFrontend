@@ -1,0 +1,21 @@
+.blue-box{
+    position: relative;
+    min-width: 90px;
+    max-width: 100%;
+    height: 15px;
+    background-color: rgba(74, 135, 228, 0.719);
+    border: 2px solid rgb(0, 47, 255);
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    color: var(--color-neutral-700);
+    font-size: 1.1rem;
+    margin-right: 0.6rem;
+    outline: 0;
+    padding: 0.1rem 0.3rem 0.2rem;
+    position: relative;
+    margin-top: 5px;
+    font-size: 12px;
+  }
