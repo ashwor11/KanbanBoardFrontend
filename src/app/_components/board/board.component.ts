@@ -9,6 +9,7 @@ import { Card } from 'src/app/_models/card';
 import { Column } from 'src/app/_models/column';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { Person } from 'src/app/_models/person';
 
 
 
@@ -38,6 +39,7 @@ export class BoardComponent {
     getBoard(boardId : number){
       this._boardService.getBoardById(boardId).subscribe(result=>{
         this.board = result;
+        this.board.persons = JSON.parse(JSON.stringify(result.persons));
         console.log(this.board)
       }, err=>{});
       this.board.backlog.status = 0

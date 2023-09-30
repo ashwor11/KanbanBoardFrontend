@@ -1,0 +1,53 @@
+.nav{
+  width: 100%;
+  height: 50px;
+    display: inline-block;
+    padding: 0;
+    border-bottom: 1px solid #8e8d91ad;
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+
+    align-items: center;
+}
+
+.center-area{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.right-area{
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  padding-right: 2%;
+}
+
+.board-name{
+  font-family: "TiemposText-Semibold";
+  font-size: 24px;
+}
+
+.navbutton{
+  
+    padding: 0.1rem 1.0rem;
+    background: #323b4a;
+    color: white;
+    border-radius: 2px;
+    display: inline-block;
+    font-family: var(--font-default),Helvetica,Arial,sans-serif;
+    font-size: 0.9em;
+    font-weight: 600;
+    
+   
+    
+   
+    
+    margin: auto;
+    
+
+
+}
+
+
+

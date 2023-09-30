@@ -21,7 +21,7 @@ import { JobComponent } from './_components/job/job.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field'
-import { NavbarComponent } from './_components/navbar/navbar.component';
+import { BoardNavbarComponent } from './_components/board-navbar/board-navbar.component';
 import { RegisterComponent } from './_components/register/register.component';
 import { InviteToBoardComponent } from './_components/invite-to-board/invite-to-board.component';
 import { FeedbackComponent } from './_components/feedback/feedback.component';
@@ -58,7 +58,7 @@ export const COMPONENTS : any[] = [
     ColumnComponent,
     CardComponent,
     JobComponent,
-    NavbarComponent,
+    BoardNavbarComponent,
     RegisterComponent,
     InviteToBoardComponent,
     FeedbackComponent,

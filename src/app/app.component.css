@@ -78,3 +78,5 @@
  body {
    font-family: var(--font-family);
 }
+
+html, body{height:100%;}

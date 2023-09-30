@@ -1,4 +1,4 @@
-    <app-navbar></app-navbar>
+    <app-board-navbar [boardName]="board.name" [persons]="board.persons"></app-board-navbar>
     <section cdkDropListGroup>
         <div class="kanban-container">
             <app-column cdkDropList [cdkDropListData]="board.backlog.cards" class="column" (cdkDropListDropped)="drop($event,board.backlog.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.backlog)" [column]="board.backlog" [persons]="board.persons"></app-column>

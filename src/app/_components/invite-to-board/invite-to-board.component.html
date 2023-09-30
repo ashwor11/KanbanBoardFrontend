@@ -6,6 +6,6 @@
   
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="email" cdkFocusInitial (click)="invitePerson()">Invite</button>
+  <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
+  <button mat-button [mat-dialog-close]="email" cdkFocusInitial (click)="invitePerson()" class="invite-button">Invite</button>
 </mat-dialog-actions>

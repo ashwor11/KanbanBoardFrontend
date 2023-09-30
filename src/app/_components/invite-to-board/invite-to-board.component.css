@@ -1,0 +1,15 @@
+.cancel-button{
+    margin: 5px;
+    border: 1px solid #8e8d91ad;
+border-radius: 2px;
+}
+
+
+.invite-button{
+    margin: 5px;
+    border: 1px solid #8e8d91ad;
+border-radius: 2px;
+    background: #323b4a;
+    color: white;
+    padding: 0.1rem 1.0rem;
+}
