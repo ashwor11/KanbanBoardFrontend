@@ -14,6 +14,7 @@ import { PersonForBoard } from 'src/app/_models/personForBoard';
 })
 export class BoardService {
 
+  appUrl : string = `${environment.baseUrl}`
 
   
   
@@ -216,7 +217,7 @@ export class BoardService {
   invitePersonToBoard(boardId : number, email : string) : Observable<any>{
     const url : string = `${environment.apiUrl}board/${boardId}/invitePersonToBoard`
     let body = {
-      invitationAcceptUrlPrefix : window.location.origin + "/acceptInvitation",
+      invitationAcceptUrlPrefix : this.appUrl + "acceptInvitation",
       invitedPersonEmail : email 
     }
     let options = {

@@ -12,12 +12,14 @@ import { AssignPersonComponent } from './_components/assign-person/assign-person
 import { AssignDueDateComponent } from './_components/assign-due-date/assign-due-date.component';
 import { DueDateComponent } from './_components/due-date/due-date.component';
 import { AssignedPersonComponent } from './_components/assigned-person/assigned-person.component';
+import { NavbarComponent } from './_components/navbar/navbar.component';
 
 
 
 @NgModule({
   declarations: [
     COMPONENTS,
+    NavbarComponent,
     
 
     

@@ -44,8 +44,11 @@ export class RegisterComponent {
     await this._auth.register(email,password,firstName, lastName, confirmPassword).subscribe(res=>{
       this.router.navigateByUrl(this.returnUrl);
     }, err=>{
-      
+      this.router.navigateByUrl('/register');
     });
     
+  }
+  directToLogin(){
+    this.router.navigateByUrl('/login');
   }
 }

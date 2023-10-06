@@ -1,5 +1,34 @@
+body{
+    background-color: #B4654A;
+
+}
+
 .editable{
     border:none;
     outline:none;
     background:transparent;
  }
+
+
+ .card-header{
+        text-align: center;
+ }
+
+ .card{
+    background-color: #F1EBBC;
+    cursor: pointer;
+    
+ }
+
+ a{
+    color: #333;
+    
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: #B4654A;
+    text-decoration: none;
+    cursor: pointer;
+}

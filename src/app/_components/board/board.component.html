@@ -8,7 +8,7 @@
         
         <section cdkDropListGroup>
             <div class="kanban-container">
-                <app-column cdkDropList [cdkDropListData]="board.backlog.cards" class="column" (cdkDropListDropped)="drop($event,board.backlog.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.backlog)" [column]="board.backlog" [persons]="board.persons"></app-column>
+            <app-column cdkDropList [cdkDropListData]="board.backlog.cards" class="column" (cdkDropListDropped)="drop($event,board.backlog.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.backlog)" [column]="board.backlog" [persons]="board.persons"></app-column>
             <app-column cdkDropList [cdkDropListData]="board.toDo.cards" class="column" (cdkDropListDropped)="drop($event,board.toDo.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.toDo)" [column]="board.toDo" [persons]="board.persons"></app-column>
             <app-column cdkDropList [cdkDropListData]="board.inProgress.cards" class="column" (cdkDropListDropped)="drop($event,board.inProgress.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.inProgress)" [column]="board.inProgress" [persons]="board.persons"></app-column>
             <app-column cdkDropList [cdkDropListData]="board.review.cards" class="column" (cdkDropListDropped)="drop($event,board.review.id)" (mousedown)="onMouseDown($event)" (dblclick)="addNewCard(board.review)" [column]="board.review" [persons]="board.persons"></app-column>

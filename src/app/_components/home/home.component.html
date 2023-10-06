@@ -1,14 +1,20 @@
-<br>
-<hr>
-<div class="row" style="padding-right: 10%;padding-left: 10%;">
-  <div class="col-4" style="margin-top: 10px;" *ngFor="let board of boards">
-    <div class="card" style="min-height: 280px; ">
-      <div class="card-header" > <a routerLink="/board/{{board.id}}">{{board.name}}</a></div>
-      <div class="card-body">
-<blockquote class="blockquote mb-0">
-<footer class="blockquote-footer"></footer>
-</blockquote>
+<app-navbar></app-navbar>
+
+
+
+
+<body>
+
+  <div class="row" style="padding-right: 10%;padding-left: 10%;">
+    <div class="col-2" style="margin-top: 10px;" *ngFor="let board of boards">
+      <div class="card" routerLink="/board/{{board.id}}"  style="min-height: 280px; ">
+        <div class="card-header" > <a routerLink="/board/{{board.id}}">{{board.name}}</a></div>
+        <div class="card-body">
+        </div>
       </div>
     </div>
   </div>
-</div>
+</body>
+
+
+

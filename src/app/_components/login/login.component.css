@@ -1,0 +1,56 @@
+.centered{
+    margin: 0;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+}
+
+.login-card{
+    background-color: #D4C685;
+}
+
+.h1{
+    text-align: center;
+    font-family: "TiemposText-Semibold";
+    padding-bottom: 2rem;
+    font-weight: bold;
+
+}
+
+h4{
+    text-align: center;
+}
+
+body{
+    background-color: #3D2C2E;
+}
+
+.header{
+    text-align: center!important;
+    color: #F7EF81;
+}
+
+.btn-block{
+    display: block;
+    width: 100%;
+    background-color: #B4654A ;
+    border-color: #D4C685;
+}
+
+a{
+    color: #333;
+    
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: #B4654A;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary:active{
+    background-color: #B4654A!important;
+    border-color: white;
+  }
