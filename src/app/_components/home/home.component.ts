@@ -22,6 +22,7 @@ constructor(
  getBoards() : void{
   this._board.getBoardsPersonIn().subscribe(result=>{
     this.boards = result
+    console.log(this.boards)
   },err =>{
    
   })

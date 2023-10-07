@@ -1,0 +1,24 @@
+.accept-invitation{
+    background-color: #553e40;
+    border-color : white;
+    border-radius: 0.25rem;
+    border: 1px solid white;
+}
+
+body{
+    background-color: #3D2C2E;
+}
+
+.centered{
+    margin: 0;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+}
+
+.btn-block{
+    display: block;
+    width: 100%;
+    background-color: #B4654A ;
+    border-color: #D4C685;
+}
