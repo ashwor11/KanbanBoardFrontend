@@ -10,17 +10,22 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class AuthenticationService {
    
-  
+  private isLoggedIn = new BehaviorSubject<boolean>(false);
 
   public personSubject: BehaviorSubject<Person|null>;
 
 
   constructor(private http: HttpClient) {
     this.personSubject = new BehaviorSubject<Person|null>(null);
+    this.isLoggedIn = new BehaviorSubject<boolean>(false);
    }
 
    public get personValue(): Person | null{
     return this.personSubject.value;
+   }
+
+   public get isLoggedInValue(){
+     return this.isLoggedIn.asObservable();
    }
 
 
@@ -40,6 +45,7 @@ export class AuthenticationService {
       };
       this.personSubject.next(person);
       localStorage.setItem('person', JSON.stringify(person));
+      this.isLoggedIn.next(true);
       return person;
     }))
   }
@@ -58,6 +64,7 @@ export class AuthenticationService {
         access_token : res.accessToken.token,
         refresh_token : res.refreshToken
       };
+      this.isLoggedIn.next(true);
       this.personSubject.next(person);
       localStorage.setItem('person',JSON.stringify(person));
       return person;
@@ -75,6 +82,7 @@ export class AuthenticationService {
       const person : Person = localStorage.getItem('person') ? JSON.parse(localStorage.getItem('person')!) : null;
       person.access_token = res.accessToken.token;
       person.refresh_token = res.refreshToken;
+      this.isLoggedIn.next(true);
       this.personSubject.next(person);
       localStorage.setItem('person',JSON.stringify(person));
       
@@ -84,6 +92,9 @@ export class AuthenticationService {
   }
 
   logOut(){
+    console.log('logging out authentication')
+    this.isLoggedIn.next(false);
+    this.personSubject.next(null);
     localStorage.removeItem('person');
   }
 }

@@ -56,6 +56,7 @@ export class BoardComponent {
       this._boardService.addCard(this.board.id).subscribe(result =>{
         result.status = column.id;  
         result.name = "Task"
+        result.jobs = [];
         this._boardService.changeCardName(this.board.id,result).subscribe(res =>{})
         this._boardService.changeCardStatus(this.board.id,result,column.id).subscribe(res =>{})
         column.cards.push(result);

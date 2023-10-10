@@ -4,7 +4,7 @@ import { PersonForBoard } from "./personForBoard";
 export class Board{
     id !: number;
     name !: string;
-    descriptipn !: string;
+    description !: string;
     creatorId !: number;
     persons !: PersonForBoard[]
     backlog !: Column;

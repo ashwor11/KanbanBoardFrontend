@@ -1,1 +1,24 @@
-<p>navbar works!</p>
+<nav id="menu">
+
+    <ul>
+
+
+        <section *ngIf="(isLoggedIn$ |async); else notLoggedIn" class="float-end">
+            <button class="custom-icon-button" (click)="logout()" title="Logout">
+                <mat-icon mat-button  aria-hidden="false"  aria-label="logout"   fontIcon="logout"></mat-icon>
+            </button>
+        </section>
+        <ng-template #notLoggedIn class="float-end">
+            <section class="float-end">
+                <li class="">
+                    <a routerLink="/login">Login</a>
+                </li>
+                <li class="">
+                    <a routerLink="/register">Register</a>
+                </li>
+            </section>
+            
+        </ng-template>
+    </ul>
+    
+</nav>

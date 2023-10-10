@@ -16,7 +16,9 @@ export class AcceptInvitationComponent {
     this._boardService.acceptBoardInvitation(invitationAcceptToken).subscribe(result=>{
       this.router.navigate(['/home']);
     },err=>{
-      alert(err.details.message)
+      alert(err.error.Detail)
+      this.router.navigate(['/home']);
+
     })
   }
 }
