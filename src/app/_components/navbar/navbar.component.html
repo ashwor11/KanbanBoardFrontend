@@ -2,18 +2,46 @@
 
     <ul>
 
-
-        <section *ngIf="(isLoggedIn$ |async); else notLoggedIn" class="float-end">
-            <button class="custom-icon-button" (click)="logout()" title="Logout">
-                <mat-icon mat-button  aria-hidden="false"  aria-label="logout"   fontIcon="logout"></mat-icon>
+        <li>
+            <button class="custom-icon-button gray">
+                <mat-icon mat-button aria-hidden="false" aria-label="home" fontIcon="home" routerLink="/home"> Home </mat-icon>
             </button>
+        </li>
+
+        <section *ngIf="(isLoggedIn$ |async) as LoginStatus; else notLoggedIn" class="float-end">
+            
+                <li class="nav-item">
+                    <button class="navbutton" (click)="openCreateBoardDialog()"> Create Board</button>
+                </li>
+    
+            
+
+            <div  class="dropdown">
+                <li class="nav-item">
+                    <button class="custom-icon-button gray dropbtn" mat-icon-button aria-expanded="false" aria-label="Profile">
+                        <mat-icon mat-button aria-hidden="false" aria-labe="profile" fontIcon="person" routerLink="/profile"></mat-icon>
+                      </button>
+                      <ul  class="dropdown-content profile-dropdown" >
+                        <li><button class="dropdown-item" routerLink="/profile" type="button">Profile</button></li>
+                        <li><button class="dropdown-item" type="/changePassword">Change Password</button></li>
+                      </ul>
+                </li>
+            </div>
+            
+
+            <li class="nav-item">
+                <button class="custom-icon-button gray" (click)="logout()" title="Logout">
+                    <mat-icon mat-button  aria-hidden="false"  aria-label="logout"   fontIcon="logout"></mat-icon>
+                </button>
+            </li>
+            
         </section>
         <ng-template #notLoggedIn class="float-end">
             <section class="float-end">
-                <li class="">
+                <li class="nav-item">
                     <a routerLink="/login">Login</a>
                 </li>
-                <li class="">
+                <li class="nav-item">
                     <a routerLink="/register">Register</a>
                 </li>
             </section>

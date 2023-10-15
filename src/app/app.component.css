@@ -45,6 +45,9 @@
    border: none;
    cursor: pointer;
  }
+ .gray{
+   color: gray!important;
+ }
  .custom-icon-button-black {
    font-size: 24px;
    color: black;

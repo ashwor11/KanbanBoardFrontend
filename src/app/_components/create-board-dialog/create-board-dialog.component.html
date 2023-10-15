@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Create Board</h2>
+<mat-dialog-content>
+  <p>Board Name:</p>
+  
+    <input matInput placeholder="E" [(ngModel)]="boardName" required>
+
+    <p>Board Description</p>
+
+    <input matInput placeholder="E" [(ngModel)]="boardDescription" required>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="createBoard()" class="create-button">Invite</button>
+</mat-dialog-actions>

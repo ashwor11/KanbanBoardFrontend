@@ -13,6 +13,7 @@ import { AssignDueDateComponent } from './_components/assign-due-date/assign-due
 import { DueDateComponent } from './_components/due-date/due-date.component';
 import { AssignedPersonComponent } from './_components/assigned-person/assigned-person.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
+import { CreateBoardDialogComponent } from './_components/create-board-dialog/create-board-dialog.component';
 
 
 
@@ -20,6 +21,7 @@ import { NavbarComponent } from './_components/navbar/navbar.component';
   declarations: [
     COMPONENTS,
     NavbarComponent,
+    CreateBoardDialogComponent,
     
 
     

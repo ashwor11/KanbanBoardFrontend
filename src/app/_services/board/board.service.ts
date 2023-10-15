@@ -287,6 +287,16 @@ export class BoardService {
     return this.http.get(url,options);
   }
 
+  createBoard(boardName: string, boardDescription: string) {
+    const url : string = `${environment.apiUrl}board/create`
+    let body = JSON.stringify({name:boardName, description:boardDescription});
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.post<Board>(url,body,options);
+  }
+
   
 }
 

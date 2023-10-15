@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, map} from 'rxjs';
 import {Person} from 'src/app/_models/person'
+import jwt_decode from "jwt-decode";
 import { environment } from 'src/environments/environment.development';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -17,7 +18,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) {
     this.personSubject = new BehaviorSubject<Person|null>(null);
-    this.isLoggedIn = new BehaviorSubject<boolean>(false);
+    this.isLoggedIn = new BehaviorSubject<boolean>(this.checkLoginStatus());
    }
 
    public get personValue(): Person | null{
@@ -97,6 +98,53 @@ export class AuthenticationService {
     this.personSubject.next(null);
     localStorage.removeItem('person');
   }
+
+  checkLoginStatus() : boolean 
+    {
+      
+        var loginCookie = localStorage.getItem("person");
+
+        
+        
+          
+            if(localStorage.getItem('person') === null || localStorage.getItem('person') === undefined) 
+            {
+                return false;
+            }
+
+             // Get and Decode the Token
+             const token = JSON.parse(localStorage.getItem('person')!).access_token;
+             const result = jwt_decode(token!);
+             const decoded = JSON.parse(JSON.stringify(result));
+
+            // Check if the cookie is valid
+
+            if(decoded.exp === undefined) 
+            {
+                return false;
+            }
+
+            // Get Current Date Time
+            const date = new Date(0);
+
+             // Convert EXp Time to UTC
+            let tokenExpDate = date.setUTCSeconds(decoded.exp);
+
+            // If Value of Token time greter than 
+
+            if(tokenExpDate.valueOf() > new Date().valueOf()) 
+            {
+                return true;
+            }
+
+            console.log("NEW DATE " + new Date().valueOf());
+            console.log("Token DATE " + tokenExpDate.valueOf());
+
+            return false;
+          
+        
+        return false;
+    }
 }
 
 
