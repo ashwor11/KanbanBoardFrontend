@@ -1,5 +1,16 @@
 <nav class="nav">
     <div class="left-area"></div>
     <div class="center-area"><span class="board-name"> {{boardName}}</span></div>
-    <div class="right-area"> <button class="navbutton" (click)="openInviteDialog()"> <span class="text-white"> Invite</span></button></div>
+    <div class="right-area"> 
+    
+      <button class="navbutton" (click)="openInviteDialog()"> <span class="text-white"> Invite</span></button>
+      <div class="dropdown">
+      <button  class="custom-icon-button gray dropbtn" mat-icon-button aria-expanded="false" aria-label="more"> <mat-icon mat-button aria-hidden="false" aria-label="more" fontIcon="more_vert"></mat-icon> </button>
+        <ul  class="dropdown-content profile-dropdown" >
+          <li><button class="dropdown-item" (click)="leaveBoard()" type="button">Leave Board</button></li>
+          <li  *ngIf="board.creatorId == currentPersonId"><button class="dropdown-item"   (click)="deleteBoard()" type="button">Delete</button></li>
+        </ul>
+
+      </div>
+    </div>
   </nav>

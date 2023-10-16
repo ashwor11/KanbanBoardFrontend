@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication/authentication.service';
@@ -17,22 +17,25 @@ export class ErrorInterceptor {
     // if token expired try to refresh it
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         
-        // if token expired try to refresh it, if token refreshed successfully then reload the page
         return next.handle(request).pipe(catchError(err => {
 
             if ([ 403].includes(err.status) && this._auth.personValue) {
                 alert(err.error.Detail);
-                this.router.navigate(["login"]);
+                this.router.navigate(["home"]);
             }else if([404].includes(err.status)){
                 this.router.navigate(["404"]);
             }else if([400].includes(err.status)){
-                console.log(err.error.errors.Name)
+                alert(err.error.Detail)
                 
             }else if ([401].includes(err.status) && this._auth.personValue) {
                 console.log('refreshing token')
                 return this.handle401Error(request, next);
             }
-            return throwError(()=>err)
+
+            //error handled so return without throwing error
+            return of(err);
+            
+
         }))
 
         

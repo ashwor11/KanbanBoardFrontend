@@ -42,5 +42,40 @@
     
 }
 
+.dropbtn{
+
+
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: rgb(221, 217, 214);
+    z-index: 1;
+
+}
+
+.dropdown-item{
+}
+
+.dropdown-content a{
+    color: gray;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-dropdown{
+    right: 4px;
+    left: auto;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+
 
 

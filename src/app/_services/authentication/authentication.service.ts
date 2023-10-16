@@ -137,13 +137,11 @@ export class AuthenticationService {
                 return true;
             }
 
-            console.log("NEW DATE " + new Date().valueOf());
-            console.log("Token DATE " + tokenExpDate.valueOf());
+           
 
             return false;
           
         
-        return false;
     }
 }
 

@@ -18,15 +18,12 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.isLoggedIn$ = this.auth.isLoggedInValue;
-    if(this.auth.isLoggedInValue){
-      console.log(this.isLoggedIn$.subscribe(x=>console.log(x)));
-    }
+    
       
   }
 
 
   logout(){
-    console.log("logout")
     this.auth.logOut();
     this.router.navigate(['/login']);
   }

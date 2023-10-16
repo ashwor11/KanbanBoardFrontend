@@ -14,6 +14,9 @@ import { DueDateComponent } from './_components/due-date/due-date.component';
 import { AssignedPersonComponent } from './_components/assigned-person/assigned-person.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
 import { CreateBoardDialogComponent } from './_components/create-board-dialog/create-board-dialog.component';
+import { ProfileComponent } from './_components/profile/profile.component';
+import { ChangePasswordComponent } from './_components/change-password/change-password.component';
+import { ForgottenPasswordComponent } from './_components/forgotten-password/forgotten-password.component';
 
 
 
@@ -22,6 +25,9 @@ import { CreateBoardDialogComponent } from './_components/create-board-dialog/cr
     COMPONENTS,
     NavbarComponent,
     CreateBoardDialogComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    ForgottenPasswordComponent,
     
 
     

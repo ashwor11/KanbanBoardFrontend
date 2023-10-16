@@ -297,6 +297,24 @@ export class BoardService {
     return this.http.post<Board>(url,body,options);
   }
 
+  leaveBoard(boardId: number) {
+    const url : string = `${environment.apiUrl}board/${boardId}/leave`
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.get(url,options);
+  }
+
+  deleteBoard(boardId: number) {
+    const url : string = `${environment.apiUrl}board/${boardId}/delete`
+    let options = {
+      headers : new HttpHeaders()
+                      .set('Content-Type','application/json')
+    }
+    return this.http.delete(url,options);
+  }
+
   
 }
 
