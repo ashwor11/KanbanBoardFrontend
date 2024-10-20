@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import humps from 'humps';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Board } from 'src/app/_models/board';
-import { Observable, catchError, map, pipe } from 'rxjs';
+import { Observable, Subject, catchError, map, pipe, share } from 'rxjs';
 import { Card } from 'src/app/_models/card';
 import { Job } from 'src/app/_models/job';
 import { Feedback } from 'src/app/_models/feedback';
@@ -15,6 +16,7 @@ import { PersonForBoard } from 'src/app/_models/personForBoard';
 export class BoardService {
 
   appUrl : string = `${environment.baseUrl}`
+  private boardUpdates = new Subject<Board>();
 
   
   
@@ -42,6 +44,38 @@ export class BoardService {
                     .set('Content-Type', 'application/json')
     };
     return this.http.get<Board>(url,options);
+  }
+
+  subscribeToBoard(boardId: number): Observable<Board> {
+    return new Observable<Board>(observer => {
+      const eventSource = new EventSource(`${environment.apiUrl}board/subscribe/${boardId}`);
+  
+      eventSource.onmessage = (event) => {
+        try {
+          if (event.data !== "keepalive") {
+            // HttpClient gibi otomatik dönüşüm yapalım
+            const data = event.data ? JSON.parse(event.data) : null;
+            if (data) {
+              const updatedBoard =  humps.camelizeKeys(data) as Board;
+              observer.next(updatedBoard);              
+            }
+          }
+        } catch (error) {
+          console.error('Parse error:', error);
+          observer.error(error);
+        }
+      };
+  
+      eventSource.onerror = (error) => {
+        console.error('SSE error:', error);
+        observer.error(error);
+        eventSource.close();
+      };
+  
+      return () => {
+        eventSource.close();
+      };
+    }).pipe(share());
   }
 
   addCard(boardId: number) : Observable<Card>{
@@ -206,12 +240,9 @@ export class BoardService {
 
   deleteCard(boardId : number, card : Card) : Observable<any>{
     const url : string = `${environment.apiUrl}board/${boardId}/cards/${card.id}/delete`
-    let options={
-      headers : new HttpHeaders()
-                      .set('Content-Type','application-json')
-    }
+    
 
-    return this.http.delete(url, options);
+    return this.http.delete(url);
   }
 
   invitePersonToBoard(boardId : number, email : string) : Observable<any>{

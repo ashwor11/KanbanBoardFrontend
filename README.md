@@ -26,13 +26,19 @@ Welcome to the Kanban Board Frontend project, a powerful tool for managing your 
 
 2. Clone this repository for the Kanban Board Frontend.
 
-3. Start the KanbanBoard API.
+3. Start the KanbanBoard API. You can use the instructions on [repository page](https://github.com/ashwor11/KanbanBoard).
 
-4. Run this repository using the **ng serve** command in your command line interface.
+4. Clone this repository to a folder.
 
-5. Access the application by opening your web browser and navigating to **localhost:4200/home**.
+5. Type **cd KanbanBoardFrontend**.
 
-6. Start exploring and managing your projects efficiently!
+6. Run the command **npm install** to install dependencies of the program.
+
+7. Run this repository using the **ng serve** command in your command line interface.
+
+8. Access the application by opening your web browser and navigating to **localhost:4200/home**.
+
+9. Start exploring and managing your projects efficiently!
 
 ## Screenshots
 

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectorRef} from '@angular/core';
 import {NgFor} from '@angular/common';
 import {CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/_services/board/board.service';
@@ -10,6 +10,8 @@ import { Column } from 'src/app/_models/column';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { Person } from 'src/app/_models/person';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs';
 
 
 
@@ -25,13 +27,21 @@ import { Person } from 'src/app/_models/person';
 
 
 export class BoardComponent {
+  private destroy$ = new Subject<void>();
 
-  constructor(private _boardService : BoardService, private dialog:MatDialog){}
+  constructor(private _boardService : BoardService, private dialog:MatDialog, private cd: ChangeDetectorRef){}
 
   @Input() id = 0;
 
-  ngOnInit(){
-    this.getBoard(this.id);
+  
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+  async ngOnInit(){
+    await this.getBoard(this.id);
+    this.subscribeToUpdates();
   }
 
     board : Board = new Board();
@@ -47,6 +57,28 @@ export class BoardComponent {
       this.board.review.status = 3
       this.board.done.status = 4
 
+    }
+
+    private subscribeToUpdates() {
+      this._boardService.subscribeToBoard(this.id).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe({
+        next: (updatedBoard: Board) => {
+          this.board = updatedBoard;
+          this.board.persons = JSON.parse(JSON.stringify(updatedBoard.persons));
+          this.board.backlog.status = 0
+          this.board.toDo.status = 1
+          this.board.inProgress.status = 2
+          this.board.review.status = 3
+          this.board.done.status = 4
+
+          this.cd.detectChanges();
+
+        },
+        error: (error) => {
+          console.error('Board subscription error:', error);
+        }
+      });
     }
 
     addNewCard(column : Column){
