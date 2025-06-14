@@ -3,8 +3,7 @@ import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication/authentication.service';
 import { Person } from 'src/app/_models/person';
-import { catchError } from 'rxjs';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -40,12 +39,13 @@ export class LoginComponent {
 
   async submit(){
     const {email,password} = this.f;
-    await this._auth.logIn(email,password).subscribe(res=>{
+    try {
+      await firstValueFrom(this._auth.logIn(email, password));
       this.router.navigateByUrl(this.returnUrl);
-    }, err=>{
-      
-    });
-    
+    } catch (err) {
+      // handle error if needed
+    }
+
   }
 
   directToRegister(){

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication/authentication.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -41,12 +42,15 @@ export class RegisterComponent {
 
   async submit(){
     const {email,password, firstName, lastName, confirmPassword} = this.f;
-    await this._auth.register(email,password,firstName, lastName, confirmPassword).subscribe(res=>{
+    try {
+      await firstValueFrom(
+        this._auth.register(email, password, firstName, lastName, confirmPassword)
+      );
       this.router.navigateByUrl(this.returnUrl);
-    }, err=>{
+    } catch (err) {
       this.router.navigateByUrl('/register');
-    });
-    
+    }
+
   }
   directToLogin(){
     this.router.navigateByUrl('/login');
